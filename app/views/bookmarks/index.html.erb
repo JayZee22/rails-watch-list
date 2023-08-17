@@ -1,0 +1,11 @@
+<h1>All Bookmarks</h1>
+
+<ul class="list-group">
+  <% @bookmarks.each do |bookmark| %>
+    <li class="list-group-item">
+      <%= link_to bookmark.comment, bookmark_path(bookmark) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create a Bookmark', bookmarks_new_path, class: 'btn btn-primary mt-3' %>

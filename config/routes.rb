@@ -3,4 +3,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # create list
+  get 'lists/new', to: 'lists#new'
+  post 'lists', to: 'lists#create'
+  # A user can see all the lists
+  get 'lists', to: 'lists#index'
+  # A user can see the details of a given list and its name
+  get 'lists/:id', to: 'lists#show', as: :list
+  # A user can add a new bookmark (movie/list pair) to an existing list
+  resources :lists do
+    resources :bookmarks, only: [:new, :create]
+  end
+  # A user can see all the bookmarks
+  get 'bookmarks', to: 'bookmarks#index'
 end
