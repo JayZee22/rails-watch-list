@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
+  before_action :set_list, only: %i[show]
   def index
     @lists = List.all
   end
@@ -15,6 +15,7 @@ class ListsController < ApplicationController
 
   def show
     # We recuperate the list by its id
+    @bookmark = Bookmark.new
   end
 
   private

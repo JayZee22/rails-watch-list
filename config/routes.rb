@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'lists/:id', to: 'lists#show', as: :list
   # A user can add a new bookmark (movie/list pair) to an existing list
   # A user can see all the bookmarks of a list
+  # A user can delete a bookmark from a list
   resources :lists do
-    resources :bookmarks, only: [:index, :new, :create]
+    resources :bookmarks, only: [:index, :new, :create, :destroy]
   end
 end

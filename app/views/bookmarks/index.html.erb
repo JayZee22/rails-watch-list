@@ -2,8 +2,9 @@
 
 <ul>
   <% @bookmarks.each do |bookmark| %>
-    <li><%= link_to bookmark.movie.title, movie_path(bookmark.movie) %></li>
-    <!-- Display other bookmark details as needed -->
+    <li>
+      <%= link_to bookmark.movie.title, movie_path(bookmark.movie) %>
+    </li>
   <% end %>
 </ul>
 
