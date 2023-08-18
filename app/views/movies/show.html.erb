@@ -1,0 +1,6 @@
+<h1><%= @movie.title %></h1>
+<p><%= @movie.overview %></p>
+<p>Rating: <%= @movie.rating %></p>
+
+<%= link_to "Back to Movies", movies_path, class: "btn btn-secondary" %>
+<%= link_to "Add to List", new_movie_path(@movie), class: "btn btn-primary" %>

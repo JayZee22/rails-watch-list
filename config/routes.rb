@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'movies/new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
   # A user can see all the bookmarks of a list
   # A user can delete a bookmark from a list
   resources :lists do
-    resources :bookmarks, only: [:index, :new, :create, :destroy]
+    resources :bookmarks, only: [:create]
+  end
+
+  resources :bookmarks, only: [:destroy]
+
+  resources :movies, only: [:index, :show, :new, :create] do
+    resources :bookmarks, only: [:new, :create]
   end
 end

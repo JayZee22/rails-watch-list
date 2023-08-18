@@ -2,21 +2,30 @@
 
 <h3><%= @list.name %> List</h3>
 
-<!-- Display list details here -->
-
-<%= link_to "Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-
 <!-- Display all bookmarks here -->
 <div class="bookmark-list">
   <h4>Bookmarks</h4>
-  <ul class="list-group"> <% raise %>
+  <ul class="list-group">
     <% @list.bookmarks.each do |bookmark| %>
       <li class="list-group-item">
         <%= bookmark.comment %>
-        <%= link_to "Delete", list_bookmark_path(@list, bookmark), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm float-end" %>
+          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm float-end" %>
       </li>
     <% end %>
   </ul>
+</div>
+
+<!-- Create bookmarks here -->
+
+<div class="row my-5 justify-content-center">
+  <div class="col-4">
+    <h4>Add a bookmark</h4>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.input :movie_id, collection: Movie.all, label: "Movie", prompt: "Select a movie" %>
+      <%= f.input :comment %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to 'Back to Lists', lists_path, class: "btn btn-secondary mt-3" %>
