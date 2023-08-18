@@ -1,11 +1,10 @@
-<h1>All Bookmarks</h1>
+<h1><%= @list.name %> Bookmarks</h1>
 
-<ul class="list-group">
+<ul>
   <% @bookmarks.each do |bookmark| %>
-    <li class="list-group-item">
-      <%= link_to bookmark.comment, bookmark_path(bookmark) %>
-    </li>
+    <li><%= link_to bookmark.movie.title, movie_path(bookmark.movie) %></li>
+    <!-- Display other bookmark details as needed -->
   <% end %>
 </ul>
 
-<%= link_to 'Create a Bookmark', bookmarks_new_path, class: 'btn btn-primary mt-3' %>
+<%= link_to "Back to List", list_path(@list), class: "btn btn-secondary" %>

@@ -1,11 +1,13 @@
-<h1>All Lists</h1>
+<div class="d-block p-2 bg-dark text-white">
+  <h1>All Lists</h1>
 
-<ul class="list-group">
-  <% @lists.each do |list| %>
-    <li class="list-group-item">
-      <%= link_to list.name, list_path(list) %>
-    </li>
-  <% end %>
-</ul>
+    <ul class="list-group">
+      <% @lists.each do |list| %>
+        <li class="list-group-item">
+          <%= link_to list.name, list_path(list) %>
+        </li>
+      <% end %>
+    </ul>
 
-<%= link_to 'Create a movie List', lists_new_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Create a movie List', lists_new_path, class: 'btn btn-primary mt-3' %>
+</div>

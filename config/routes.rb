@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   # A user can see the details of a given list and its name
   get 'lists/:id', to: 'lists#show', as: :list
   # A user can add a new bookmark (movie/list pair) to an existing list
+  # A user can see all the bookmarks of a list
   resources :lists do
-    resources :bookmarks, only: [:new, :create]
+    resources :bookmarks, only: [:index, :new, :create]
   end
-  # A user can see all the bookmarks
-  get 'bookmarks', to: 'bookmarks#index'
 end
